@@ -131,9 +131,24 @@ const stageSlides = [
     items: ['Întâlniri cu profesioniști din domeniu', 'Exerciții practice și feedback aplicat', 'Comunitate și socializare artistică']
   }
 ];
+const stageImages = [
+  {
+    src: 'assets/Spectacol Final.webp',
+    alt: 'Copii pe scenă, cântând și dansând'
+  },
+  {
+    src: 'assets/auditii.webp',
+    alt: 'Audiție și eveniment muzical AHA Music Lab'
+  },
+  {
+    src: 'assets/workshop.webp',
+    alt: 'Workshop și experiență muzicală AHA Music Lab'
+  }
+];
 let stageIndex = 0;
 function renderStage() {
   const s = stageSlides[stageIndex];
+  const image = stageImages[stageIndex];
   const card = document.getElementById('stageCard');
   card.style.opacity = '.25';
   card.style.transform = 'scale(.985)';
@@ -141,6 +156,9 @@ function renderStage() {
     document.getElementById('stageTitle').textContent = s.title;
     document.getElementById('stageText').textContent = s.text;
     document.getElementById('stageList').innerHTML = s.items.map(i => `<span><b>✓</b>${i}</span>`).join('');
+    const stageImage = card.querySelector('#stageImage');
+    stageImage.src = image.src;
+    stageImage.alt = image.alt;
     card.style.opacity = '1';
     card.style.transform = 'scale(1)';
   }, 150);
