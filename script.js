@@ -153,3 +153,49 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   document.getElementById('success').style.display = 'block';
   e.currentTarget.reset();
 });
+
+const revealGroups = [
+  { selector: '.hero-grid > div', direction: ['reveal-left', 'reveal-right'] },
+  { selector: '.about-head > *, .about-media' },
+  { selector: '.programs .eyebrow, .programs .section-title, .programs .section-copy, .program-tile' },
+  { selector: '.stage-head > *, .stage-card', scaleLast: true },
+  { selector: '.outcomes .section-title, .outcome-card' },
+  { selector: '.classes-head > *, .class-card' },
+  { selector: '.cta-center > *, .float-img' },
+  { selector: '.contact-grid > *', direction: ['reveal-left', 'reveal-right'] },
+  { selector: '.footer-grid > *, .footer-bottom' }
+];
+
+revealGroups.forEach(group => {
+  const elements = document.querySelectorAll(group.selector);
+  elements.forEach((element, index) => {
+    element.classList.add('reveal');
+
+    if (group.direction) {
+      element.classList.add(group.direction[index % group.direction.length]);
+    } else if (group.scaleLast && index === elements.length - 1) {
+      element.classList.add('reveal-scale');
+    }
+
+    element.style.setProperty('--reveal-delay', `${Math.min(index * 90, 360)}ms`);
+  });
+});
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (reduceMotion || !('IntersectionObserver' in window)) {
+  document.querySelectorAll('.reveal').forEach(element => element.classList.add('is-visible'));
+} else {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: .14,
+    rootMargin: '0px 0px -7% 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+}
