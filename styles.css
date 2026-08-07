@@ -383,6 +383,26 @@ header {
 .contact-points { display: grid; gap: 17px; margin-top: 34px; }
 .contact-points span { display: flex; gap: 14px; align-items: center; font-size: 17px; }
 .contact-points i { width: 31px; height: 31px; border-radius: 50%; background: var(--purple); color: white; display: grid; place-items: center; font-style: normal; }
+.contact-details {
+  display: grid;
+  gap: 14px;
+  margin-top: 34px;
+  font-style: normal;
+}
+.contact-details a,
+.contact-details span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+}
+.contact-details i {
+  width: 22px;
+  color: var(--purple);
+  text-align: center;
+}
 .form {
   background: white;
   padding: 36px;
@@ -427,6 +447,7 @@ footer {
 .footer-about p { color: #d0ccd3; font-size: 17px; line-height: 1.6; max-width: 410px; }
 .footer-col h4 { font-size: 22px; margin: 0 0 24px; }
 .footer-col a { display: block; margin: 0 0 16px; color: #d0ccd3; }
+.footer-address { display: block; color: #d0ccd3; line-height: 1.5; }
 .socials { display: flex; gap: 12px; margin-top: 28px; }
 .socials a { width: 48px; height: 48px; border-radius: 50%; background: var(--coral); color: #111; display: grid; place-items: center; font-size: 21px; transition: transform .2s, background-color .2s; }
 .socials a:hover { background: #fff; transform: translateY(-2px); }
