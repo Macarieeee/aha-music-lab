@@ -425,6 +425,8 @@ textarea { min-height: 125px; resize: vertical; }
 .field { margin-bottom: 18px; }
 .form-note { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
 .success { display: none; margin-top: 16px; padding: 13px 15px; border-radius: 10px; background: #e9f8ee; color: #1b6c39; }
+.success.error { background: #fff0ee; color: #a52c1d; }
+.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
 footer {
   background: #050505;

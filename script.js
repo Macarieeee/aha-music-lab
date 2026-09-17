@@ -166,12 +166,6 @@ function renderStage() {
 document.getElementById('stagePrev').addEventListener('click', () => { stageIndex = (stageIndex - 1 + stageSlides.length) % stageSlides.length; renderStage(); });
 document.getElementById('stageNext').addEventListener('click', () => { stageIndex = (stageIndex + 1) % stageSlides.length; renderStage(); });
 
-document.getElementById('contactForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  document.getElementById('success').style.display = 'block';
-  e.currentTarget.reset();
-});
-
 const revealGroups = [
   { selector: '.hero-grid > div', direction: ['reveal-left', 'reveal-right'] },
   { selector: '.about-head > *, .about-media' },
